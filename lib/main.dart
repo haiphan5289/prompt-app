@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/theme/app_theme.dart';
+import 'features/transformer/presentation/screens/transformer_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: PromptApp()));
@@ -18,9 +19,7 @@ class PromptApp extends StatelessWidget {
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        body: Center(child: Text('Prompt App')),
-      ),
+      home: const TransformerScreen(),
     );
   }
 }

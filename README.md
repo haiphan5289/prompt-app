@@ -62,10 +62,10 @@ No prompt engineering knowledge required. The patterns do the work.
 
 | Layer | Technology |
 |---|---|
-| Framework | Flutter (Dart) |
-| State management | TBD |
-| Storage | TBD |
-| AI integration | TBD |
+| Framework | Flutter 3.10+ (Dart 3) |
+| State management | Riverpod 2 |
+| AI integration | OpenAI `gpt-4o-mini` via HTTP |
+| Architecture | Clean Architecture (Feature-first) |
 
 ---
 
@@ -73,28 +73,69 @@ No prompt engineering knowledge required. The patterns do the work.
 
 ### Prerequisites
 
-- Flutter SDK `>=3.0.0`
-- Dart SDK `>=3.0.0`
-- Android Studio / Xcode (for device targets)
+- Flutter SDK `>=3.10.0` — [install guide](https://docs.flutter.dev/get-started/install)
+- Dart SDK `>=3.0.0` (bundled with Flutter)
+- Xcode (iOS) or Android Studio (Android)
+- An [OpenAI API key](https://platform.openai.com/api-keys) for AI responses
 
-### Run the app
+### 1. Install dependencies
 
 ```bash
 flutter pub get
+```
+
+### 2. Generate iOS/Android platform folders (first time only)
+
+If the `ios/` or `android/` folder is missing, run:
+
+```bash
+flutter create --org com.haiphan --project-name prompt_app .
+```
+
+> This only adds platform folders. It does not overwrite any Dart code in `lib/`.
+
+### 3. Run the app
+
+**With AI enabled:**
+```bash
+flutter run --dart-define=OPENAI_API_KEY=sk-your-key-here
+```
+
+**UI-only (no API key):**
+```bash
 flutter run
 ```
+
+> Without a key the app runs normally. Submitting a prompt will show a retry button with a 401 error.
+
+**Target a specific device:**
+```bash
+# List connected devices
+flutter devices
+
+# Run on a specific device
+flutter run -d <device-id> --dart-define=OPENAI_API_KEY=sk-your-key-here
+```
+
+### 4. Physical iPhone setup
+
+To run on a physical iPhone:
+1. Connect iPhone via USB
+2. Go to **Settings → Privacy & Security → Developer Mode** and enable it
+3. iPhone will restart — confirm enabling Developer Mode
+4. Run `flutter run -d <your-iphone-device-id>`
 
 ### Build
 
 ```bash
-# Android
-flutter build apk
+# Android APK
+flutter build apk --dart-define=OPENAI_API_KEY=sk-your-key-here
 
 # iOS
-flutter build ios
+flutter build ios --dart-define=OPENAI_API_KEY=sk-your-key-here
 
-# Web
-flutter build web
+# macOS
+flutter build macos --dart-define=OPENAI_API_KEY=sk-your-key-here
 ```
 
 ---
@@ -225,11 +266,16 @@ Length: [word count or "short / medium / long"]
 prompt-app/
 ├── lib/
 │   ├── main.dart
-│   ├── screens/
-│   ├── widgets/
-│   ├── models/
-│   └── services/
-├── assets/
+│   ├── core/
+│   │   ├── network/          ← OpenAI HTTP client
+│   │   └── theme/            ← AppTheme, AppColors, AppSpacing
+│   ├── features/
+│   │   └── transformer/
+│   │       ├── domain/       ← PromptPattern entity, UseCases, Repository interface
+│   │       ├── data/         ← AIRepositoryImpl, datasource, Riverpod providers
+│   │       └── presentation/ ← TransformerNotifier, TransformerScreen
+│   └── shared/
+│       └── widgets/          ← CopyButton
 ├── test/
 └── pubspec.yaml
 ```
