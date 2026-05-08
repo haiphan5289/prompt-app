@@ -1,0 +1,137 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(/.claude/skills/**)",
+      "Bash(flutter analyze:*)",
+      "Bash(dart format:*)",
+      "Bash(flutter test:*)",
+      "Bash(flutter pub get:*)",
+      "Edit(/.claude/skills/pa-anti-hallucination/**)",
+      "Edit(/.claude/skills/pa-bugfix-skill/**)",
+      "Edit(/.claude/skills/pa-flutter-expert-skill/**)",
+      "Edit(/.claude/skills/pa-prompt-pattern-design/**)",
+      "Edit(/.claude/skills/pa-feature-pipeline/**)",
+      "Edit(/.claude/skills/pa-scaffold/**)",
+      "Edit(/.claude/skills/pa-review-code/**)",
+      "Edit(/.claude/skills/pa-alternative-approaches/**)",
+      "Edit(/.claude/skills/pa-unittest/**)",
+      "Edit(/.claude/skills/pa-chain-of-thought/**)",
+      "Edit(/.claude/skills/pa-flipped-interaction/**)",
+      "Edit(/.claude/skills/pa-persona-pattern/**)",
+      "Edit(/.claude/skills/pa-git-diff/**)",
+      "Edit(/.claude/skills/pa-issue-detection/**)",
+      "Edit(/.claude/skills/pa-ai-document/**)",
+      "Edit(/.claude/skills/pa-semantic-filter/**)",
+      "Edit(/.claude/skills/pa-handoff-implement/**)",
+      "Edit(/.claude/skills/pa-module-context/**)",
+      "Edit(/.claude/skills/pa-module/**)",
+      "Edit(/.claude/skills/pa-generate-usecase/**)",
+      "Edit(/.claude/skills/pa-handle-usecase/**)",
+      "Edit(/.claude/skills/pa-repository/**)",
+      "Edit(/.claude/skills/pa-service/**)",
+      "Edit(/.claude/skills/pa-widget/**)",
+      "Edit(/.claude/skills/pa-theme/**)",
+      "Edit(/.claude/skills/pa-design-system/**)",
+      "Edit(/.claude/skills/pa-quality-engineer/**)",
+      "Edit(/.claude/skills/pa-figma-implement/**)",
+      "Edit(/.claude/skills/pa-jira-patch/**)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-anti-hallucination/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-anti-hallucination/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-bugfix-skill/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-bugfix-skill/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-flutter-expert-skill/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-flutter-expert-skill/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-scaffold/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-scaffold/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-module/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-module/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-prompt-pattern-design/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-prompt-pattern-design/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-feature-pipeline/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-feature-pipeline/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-generate-usecase/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-generate-usecase/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-handle-usecase/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-handle-usecase/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-repository/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-repository/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-review-code/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-review-code/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-quality-engineer/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-quality-engineer/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-issue-detection/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-issue-detection/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-unittest/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-unittest/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-alternative-approaches/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-alternative-approaches/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-chain-of-thought/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-chain-of-thought/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-flipped-interaction/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-flipped-interaction/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-persona-pattern/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-persona-pattern/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-handoff-implement/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-handoff-implement/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-module-context/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-module-context/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-git-diff/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-git-diff/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-ai-document/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-ai-document/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-semantic-filter/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-semantic-filter/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-jira-patch/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-jira-patch/tools)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-prompt-pattern-design/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-feature-pipeline/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-generate-usecase/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-handle-usecase/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-repository/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-review-code/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-quality-engineer/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-issue-detection/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-unittest/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-alternative-approaches/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-chain-of-thought/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-flipped-interaction/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-persona-pattern/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-handoff-implement/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-module-context/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-git-diff/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-ai-document/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-semantic-filter/tools/.gitkeep)",
+      "Bash(touch /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-jira-patch/tools/.gitkeep)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-service/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-service/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-widget/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-widget/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-theme/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-theme/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-design-system/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-design-system/tools)",
+      "Bash(mkdir -p /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-figma-implement/spec /Users/hai.phan/Desktop/haiphan/prompt-app/.claude/skills/pa-figma-implement/tools)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "error|exception|crash|fail|does not|cannot find|undefined|null check|type mismatch|build",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Reminder: invoke pa-bugfix-skill before analyzing this problem.'"
+          }
+        ]
+      },
+      {
+        "matcher": "implement|create.*screen|new.*widget|add.*feature|build.*ui|new screen|add component",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Reminder: invoke pa-flutter-expert-skill before writing Flutter code.'"
+          }
+        ]
+      },
+      {
+        "matcher": "review|check.*code|is this correct|is this right|audit|does this look",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Reminder: invoke pa-review-code skill before responding.'"
+          }
+        ]
+      },
+      {
+        "matcher": "best way|alternative|options|approach|compare|which.*better|how should",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Reminder: invoke pa-alternative-approaches skill before responding.'"
+          }
+        ]
+      },
+      {
+        "matcher": "new pattern|add pattern|design pattern|prompt pattern|transformer",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Reminder: invoke pa-prompt-pattern-design skill to define the pattern structure first.'"
+          }
+        ]
+      }
+    ]
+  }
+}
