@@ -9,6 +9,8 @@ effort: high
 
 Generates well-structured test files for UseCases, Notifiers, Repositories, and Screens. Uses `mocktail` for mocking, mirrors source structure in `test/`, and follows Given-When-Then test case style.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

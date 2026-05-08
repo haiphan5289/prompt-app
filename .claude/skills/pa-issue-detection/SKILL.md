@@ -7,6 +7,8 @@ description: Pre-merge issue scanner for Prompt App — diffs current branch aga
 
 Scans all Dart files changed on the current branch and flags 12 high-risk patterns that pass `flutter analyze` but still cause runtime problems. Run before opening any PR.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

@@ -7,6 +7,8 @@ description: Add a UseCase execution method to an existing Notifier in Prompt Ap
 
 Add a new action method to an existing Notifier that executes a UseCase. Use when a UseCase already exists but is not yet wired to a Notifier. Generates the execute method with correct variant (replace state, append to list, or invalidate self).
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

@@ -8,6 +8,8 @@ argument-hint: "[JIRA: <key>] [FILES: <path>] [FEATURE_REQUEST: ...] [CONTEXT: .
 
 Generate a structured, co-located feature document by gathering context from Jira, local files, and git diff. Use when documenting a new feature with PRD context, business rules, architecture overview, and key implementation files.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

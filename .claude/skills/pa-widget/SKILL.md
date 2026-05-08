@@ -7,6 +7,8 @@ description: Generate a reusable Flutter widget for Prompt App — pattern cards
 
 Use when extracting a repeated UI element or building a new standalone widget.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

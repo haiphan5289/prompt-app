@@ -7,6 +7,8 @@ description: Implement a Prompt App feature from a written handoff spec (Notion 
 
 Takes a design handoff document, extracts requirements, asks clarifying questions if needed, then implements UI and logic changes following the Prompt App layered architecture. Use when receiving a feature spec from a designer or PM.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

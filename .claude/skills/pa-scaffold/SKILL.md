@@ -7,6 +7,8 @@ description: Generate Flutter boilerplate files for Prompt App following Clean A
 
 Generate correctly structured Flutter boilerplate for a single file type (Screen, Notifier, UseCase, Repository, DataSource, Entity, or Widget) following Prompt App's Clean Architecture + Riverpod conventions.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

@@ -7,6 +7,8 @@ description: Generate an API Service class for Prompt App when a feature require
 
 Only use this when a feature needs an HTTP call. Most features are offline-first — they use DataSource, not Service.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

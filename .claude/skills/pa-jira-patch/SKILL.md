@@ -7,6 +7,8 @@ description: Fetch Jira ticket context for Prompt App and patch it with implemen
 
 Read a Jira ticket's requirements before implementing, or update a ticket with implementation notes, PR links, and completion status after work is done.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

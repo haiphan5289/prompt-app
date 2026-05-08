@@ -7,6 +7,8 @@ description: Flutter theming patterns for Prompt App. Covers ThemeData setup, co
 
 Reference for consistent theming using Material 3 tokens. Never hardcode values — always use theme tokens.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

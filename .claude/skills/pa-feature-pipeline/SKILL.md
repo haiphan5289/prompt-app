@@ -7,6 +7,8 @@ description: End-to-end feature pipeline for Prompt App — single input auto-ru
 
 Single-entry orchestrator that accepts one feature description and produces a complete implementation: domain model, Riverpod providers, screens, and tests. Orchestrates `pa-prompt-pattern-design` (if pattern work is needed), `pa-flutter-expert-skill` (implementation), and `pa-unittest` (test generation).
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

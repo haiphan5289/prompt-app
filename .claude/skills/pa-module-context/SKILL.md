@@ -7,6 +7,8 @@ description: Quick architecture reference for Prompt App features. Covers folder
 
 Provides a complete map of the Prompt App codebase: feature folders, key files, providers, entities, and naming conventions. Use at the start of any session to understand what already exists before adding code.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

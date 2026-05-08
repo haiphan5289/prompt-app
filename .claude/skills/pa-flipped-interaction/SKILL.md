@@ -7,6 +7,8 @@ description: Ask focused clarifying questions BEFORE implementing any feature in
 
 When a feature request is unclear, do NOT start coding. Ask targeted questions first. Once answers arrive, hand off to `pa-feature-pipeline` or `pa-flutter-expert-skill`.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

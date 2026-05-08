@@ -7,6 +7,8 @@ description: Generate a Repository interface + implementation for Prompt App fol
 
 Generate a Clean Architecture repository: domain interface + data implementation + Riverpod provider. Verify the entity class exists before generating.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

@@ -7,6 +7,8 @@ description: Generate a complete Flutter feature module for Prompt App — all 5
 
 Generate all files for a new Flutter feature module in one pass: Entity, Repository interface and implementation, UseCases, DataSource, Notifier, Screen, Card widget, provider registrations, route registration, and test stubs.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

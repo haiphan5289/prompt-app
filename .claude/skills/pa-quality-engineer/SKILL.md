@@ -9,6 +9,8 @@ effort: high
 
 Validates a completed feature across 6 dimensions simultaneously against a PRD and technical standards. Produces a structured bug report with severity classification and a ship/block recommendation.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

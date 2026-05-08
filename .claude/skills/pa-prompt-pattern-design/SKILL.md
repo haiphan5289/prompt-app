@@ -9,6 +9,8 @@ effort: high
 
 Design, evaluate, and expand the prompt pattern library that powers Prompt App's transformation engine. Use when adding a new pattern, refining an existing one, defining the transformer logic for a pattern, or deciding which patterns should be in the core library.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

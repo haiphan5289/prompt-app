@@ -7,6 +7,8 @@ description: Debug and fix Flutter/Dart bugs in Prompt App with precision. Trace
 
 Debug and fix Flutter/Dart bugs by limiting scope to 3–4 files, stating the root cause in one sentence, applying the minimal fix, then verifying end-to-end through the transformer data flow.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

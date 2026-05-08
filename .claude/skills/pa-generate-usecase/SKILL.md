@@ -7,6 +7,8 @@ description: Auto-generate and wire a UseCase across all layers of Prompt App by
 
 Takes a UseCase name, feature, and repository method, then generates the UseCase class, Riverpod provider, and Notifier binding in one pass. Use when adding a new operation to an existing feature.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

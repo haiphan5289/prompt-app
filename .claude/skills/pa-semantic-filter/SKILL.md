@@ -7,6 +7,8 @@ description: Strip sensitive or irrelevant content from feature requests and PRD
 
 Strip business-sensitive information (revenue targets, competitive intelligence, internal metrics) from a feature request or PRD while preserving all technical requirements. Use before `pa-feature-pipeline` or `pa-ai-document` when input comes from external or confidential sources.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

@@ -7,6 +7,8 @@ description: Translate Figma designs into production-ready Flutter widgets and s
 
 Use when a designer hands off a Figma frame for a screen or component. Only use `Theme.of(context)` tokens and existing widget classes — never invent new ones.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

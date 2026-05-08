@@ -9,6 +9,8 @@ effort: high
 
 Evaluates trade-offs between architectural or implementation choices before committing. Produces 3–5 concrete options with code sketches, a comparison matrix, and a decision framework. Use when you need to pick the right approach rather than the first approach.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

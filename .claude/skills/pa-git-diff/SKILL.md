@@ -7,6 +7,8 @@ description: Compare current branch against main (or any target) and produce a s
 
 Compare the current branch against main (or any target ref) and produce a per-layer change summary, review checklist, and PR description. Use before opening a PR or requesting a code review.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

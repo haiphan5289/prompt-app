@@ -7,6 +7,8 @@ description: Flutter Material 3 design system reference for Prompt App. Covers w
 
 Material 3 is the design foundation. All components use `Theme.of(context)` tokens — never raw colors or sizes.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

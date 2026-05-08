@@ -7,6 +7,8 @@ description: Flutter/Riverpod architecture reference for Prompt App. Covers Clea
 
 The canonical architecture and code-pattern reference for Prompt App. Use before writing any Flutter code — covers Clean Architecture layering, Riverpod patterns (Notifier, AsyncNotifier, Provider), widget composition rules, navigation with GoRouter, local storage with Hive, and the app's domain model.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

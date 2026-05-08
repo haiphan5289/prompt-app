@@ -7,6 +7,8 @@ description: Guard against hallucinations when generating Flutter/Dart code for 
 
 Run these checks before generating any code for Prompt App. Never assume a symbol exists — verify packages, providers, domain models, file paths, and method signatures against the actual codebase.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

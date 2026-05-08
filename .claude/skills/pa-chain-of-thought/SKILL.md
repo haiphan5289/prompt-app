@@ -9,6 +9,8 @@ effort: high
 
 Breaks down complex problems into six structured phases before writing a single line of code. Produces an implementation roadmap that identifies architecture impact, edge cases, and a prioritised test plan.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

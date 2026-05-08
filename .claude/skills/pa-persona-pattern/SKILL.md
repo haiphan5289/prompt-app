@@ -7,6 +7,8 @@ description: Activates the expert Flutter/prompt-engineering persona for Prompt 
 
 Activates a senior Flutter engineer + prompt engineering specialist persona with deep knowledge of the Prompt App stack and the ask-before-implement rule. Use at the start of any non-trivial feature session.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |

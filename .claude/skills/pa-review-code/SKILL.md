@@ -9,6 +9,8 @@ effort: high
 
 Reviews Flutter code for Clean Architecture compliance, Riverpod correctness, null safety, widget composition, performance, and prompt transformer logic. Returns a structured review with PASS/WARN/FAIL per category and actionable fix suggestions.
 
+
+> **Project context:** See [README.md](../../../README.md) for app overview and core concept.
 ## Files
 
 | File | Purpose |
