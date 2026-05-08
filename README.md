@@ -64,7 +64,7 @@ No prompt engineering knowledge required. The patterns do the work.
 |---|---|
 | Framework | Flutter 3.10+ (Dart 3) |
 | State management | Riverpod 2 |
-| AI integration | OpenAI `gpt-4o-mini` via HTTP |
+| AI integration | Google Gemini `gemini-1.5-flash` via HTTP (free tier) |
 | Architecture | Clean Architecture (Feature-first) |
 
 ---
@@ -76,7 +76,7 @@ No prompt engineering knowledge required. The patterns do the work.
 - Flutter SDK `>=3.10.0` — [install guide](https://docs.flutter.dev/get-started/install)
 - Dart SDK `>=3.0.0` (bundled with Flutter)
 - Xcode (iOS) or Android Studio (Android)
-- An [OpenAI API key](https://platform.openai.com/api-keys) for AI responses
+- A **free** [Google Gemini API key](https://aistudio.google.com) for AI responses
 
 ### 1. Install dependencies
 
@@ -96,9 +96,14 @@ flutter create --org com.haiphan --project-name prompt_app .
 
 ### 3. Run the app
 
+**Get a free Gemini API key:**
+1. Go to [aistudio.google.com](https://aistudio.google.com)
+2. Sign in with Google → **Get API key** → **Create API key**
+3. Copy the key (format: `AIza...`)
+
 **With AI enabled:**
 ```bash
-flutter run --dart-define=OPENAI_API_KEY=sk-your-key-here
+flutter run --dart-define=GEMINI_API_KEY=AIza-your-key-here
 ```
 
 **UI-only (no API key):**
@@ -114,7 +119,7 @@ flutter run
 flutter devices
 
 # Run on a specific device
-flutter run -d <device-id> --dart-define=OPENAI_API_KEY=sk-your-key-here
+flutter run -d <device-id> --dart-define=GEMINI_API_KEY=AIza-your-key-here
 ```
 
 ### 4. Physical iPhone setup
@@ -129,13 +134,13 @@ To run on a physical iPhone:
 
 ```bash
 # Android APK
-flutter build apk --dart-define=OPENAI_API_KEY=sk-your-key-here
+flutter build apk --dart-define=GEMINI_API_KEY=AIza-your-key-here
 
 # iOS
-flutter build ios --dart-define=OPENAI_API_KEY=sk-your-key-here
+flutter build ios --dart-define=GEMINI_API_KEY=AIza-your-key-here
 
 # macOS
-flutter build macos --dart-define=OPENAI_API_KEY=sk-your-key-here
+flutter build macos --dart-define=GEMINI_API_KEY=AIza-your-key-here
 ```
 
 ---

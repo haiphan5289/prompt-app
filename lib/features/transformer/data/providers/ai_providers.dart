@@ -1,23 +1,22 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/network/openai_client.dart';
+import '../../../../core/network/gemini_client.dart';
 import '../../domain/repositories/ai_repository.dart';
 import '../../domain/usecases/run_prompt_use_case.dart';
 import '../datasources/ai_remote_datasource.dart';
 import '../repositories/ai_repository_impl.dart';
 
-// Replace with your key — move to secure storage / env before production
-const _openAIApiKey = String.fromEnvironment(
-  'OPENAI_API_KEY',
+const _geminiApiKey = String.fromEnvironment(
+  'GEMINI_API_KEY',
   defaultValue: '',
 );
 
-final openAIClientProvider = Provider<OpenAIClient>(
-  (ref) => OpenAIClient(apiKey: _openAIApiKey),
+final geminiClientProvider = Provider<GeminiClient>(
+  (ref) => GeminiClient(apiKey: _geminiApiKey),
 );
 
 final aiRemoteDatasourceProvider = Provider<AIRemoteDatasource>(
-  (ref) => AIRemoteDatasource(ref.watch(openAIClientProvider)),
+  (ref) => AIRemoteDatasource(ref.watch(geminiClientProvider)),
 );
 
 final aiRepositoryProvider = Provider<AIRepository>(
