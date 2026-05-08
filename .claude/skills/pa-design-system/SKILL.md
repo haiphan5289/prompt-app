@@ -20,6 +20,7 @@ Material 3 is the design foundation. All components use `Theme.of(context)` toke
 | [spec/EVAL.md](spec/EVAL.md) | Quality checklist |
 | [spec/GUARDRAILS.md](spec/GUARDRAILS.md) | Anti-hallucination rules |
 | [spec/POSTPROCESS.md](spec/POSTPROCESS.md) | Post-execution steps |
+| [theme/TOKENS.md](theme/TOKENS.md) | Design system tokens |
 
 ## Quick Start
 

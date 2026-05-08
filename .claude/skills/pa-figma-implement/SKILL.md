@@ -20,6 +20,7 @@ Use when a designer hands off a Figma frame for a screen or component. Only use 
 | [spec/EVAL.md](spec/EVAL.md) | Quality checklist |
 | [spec/GUARDRAILS.md](spec/GUARDRAILS.md) | Anti-hallucination rules |
 | [spec/POSTPROCESS.md](spec/POSTPROCESS.md) | Post-execution steps |
+| [theme/TOKENS.md](theme/TOKENS.md) | Design system tokens |
 
 ## Quick Start
 

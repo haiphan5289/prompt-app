@@ -20,6 +20,7 @@ Use when extracting a repeated UI element or building a new standalone widget.
 | [spec/EVAL.md](spec/EVAL.md) | Quality checklist |
 | [spec/GUARDRAILS.md](spec/GUARDRAILS.md) | Anti-hallucination rules |
 | [spec/POSTPROCESS.md](spec/POSTPROCESS.md) | Post-execution steps |
+| [theme/TOKENS.md](theme/TOKENS.md) | Design system tokens |
 
 ## Quick Start
 

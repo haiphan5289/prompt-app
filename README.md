@@ -25,11 +25,36 @@ No prompt engineering knowledge required. The patterns do the work.
 
 ## Features
 
-- **Prompt Transformer** — Paste any simple prompt; the app enhances it using a selected pattern
-- **Pattern Library** — A curated set of prompt patterns (Role + Task, Chain-of-Thought, Few-Shot, RISEN, CATO, etc.)
-- **One-tap Copy** — Copy the enhanced prompt directly into ChatGPT, Claude, Gemini, or any AI tool
-- **History** — Review your original vs. enhanced prompts side by side
-- **Pattern Preview** — See what each pattern does before applying it
+### Phase 1 — MVP
+
+| # | Feature | Description |
+|---|---|---|
+| 1 | **Prompt Transformer** | Input field → select pattern → display enhanced prompt |
+| 2 | **Pattern Library** | Browse curated patterns (Role+Task, Chain-of-Thought, Few-Shot, RISEN, CATO) |
+| 3 | **Pattern Preview** | See what a pattern does before applying, with before/after example |
+| 4 | **One-tap Copy** | Copy enhanced prompt to clipboard with confirmation feedback |
+
+### Phase 2 — Extended
+
+| # | Feature | Description |
+|---|---|---|
+| 5 | **History** | List of past transforms with original vs enhanced side by side |
+| 6 | **Favorite Patterns** | Star patterns for quick access |
+| 7 | **Share Enhanced Prompt** | Share directly to other apps via system share sheet |
+| 8 | **Pattern Categories** | Filter patterns by use case: Code, Writing, Analysis, Debug |
+| 9 | **History Search** | Full-text search across past transforms |
+| 10 | **History Export** | Export history as text or JSON |
+| 11 | **Onboarding** | First-run walkthrough explaining the transformer concept |
+| 12 | **Dark Mode** | Full Material 3 dark theme support |
+| 13 | **Custom Patterns** | Define your own pattern templates |
+
+### Future — AI Integration
+
+| # | Feature | Description |
+|---|---|---|
+| 14 | **AI Pattern Suggestion** | Auto-select the best pattern based on input intent |
+| 15 | **Live Preview** | Run the enhanced prompt against an LLM and show the result inline |
+| 16 | **Pattern Ratings** | Users rate which enhanced prompts got better AI results |
 
 ---
 
