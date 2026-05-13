@@ -6,7 +6,7 @@ class GeminiClient {
 
   final String apiKey;
 
-  static const _model = 'gemini-1.5-flash';
+  static const _model = 'gemini-2.0-flash';
   static const _baseUrl =
       'https://generativelanguage.googleapis.com/v1beta/models';
   static const _timeout = Duration(seconds: 30);

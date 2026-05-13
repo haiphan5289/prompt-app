@@ -66,6 +66,104 @@ No prompt engineering knowledge required. The patterns do the work.
 | State management | Riverpod 2 |
 | AI integration | Google Gemini `gemini-1.5-flash` via HTTP (free tier) |
 | Architecture | Clean Architecture (Feature-first) |
+| Development workflow | OpenSpec + Claude AI Skills |
+
+---
+
+## Development Workflow
+
+This project uses **OpenSpec** for structured feature development and **Claude AI Skills** for implementation assistance.
+
+### OpenSpec Workflow
+
+OpenSpec provides a systematic approach to building features:
+
+1. **Propose** — Design a feature with all artifacts (proposal, design, tasks)
+   ```
+   /openspec-propose [feature-name]
+   ```
+
+2. **Apply** — Implement the tasks from the change
+   ```
+   /openspec-apply-change [change-name]
+   ```
+
+3. **Explore** — Think through problems before coding
+   ```
+   /openspec-explore
+   ```
+
+4. **Archive** — Finalize completed changes
+   ```
+   /openspec-archive-change [change-name]
+   ```
+
+Changes are stored in `openspec/changes/[change-name]/` with artifacts like `proposal.md`, `design.md`, and `tasks.md`.
+
+### Claude AI Skills & Agents
+
+This project includes specialized skills for Flutter development:
+
+**Core Skills:**
+- `pa-flutter-expert-skill` — Flutter/Riverpod architecture patterns
+- `pa-scaffold` — Generate boilerplate (screens, widgets, use cases)
+- `pa-feature-pipeline` — End-to-end feature development
+- `pa-bugfix-skill` — Debug and fix Flutter issues
+- `pa-review-code` — Code review checklist
+- `pa-unittest` — Generate widget and unit tests
+- `pa-prompt-pattern-design` — Design new prompt patterns
+
+**Agents:**
+- `pa-flutter-expert` — Primary implementation agent
+- `pa-prompt-engineer` — Prompt pattern domain expert
+- `pa-quality-engineer` — QE validation after implementation
+
+**Screen Development:**
+- `new-screen-plan` — Plan new screens (requirements + architecture)
+- `new-screen-build` — Build new screens (scaffolding + implementation)
+- `update-screen` — Modify existing screens
+
+See [.claude/CLAUDE.md](.claude/CLAUDE.md) for complete skill reference.
+
+### AI-Assisted Development
+
+This project leverages Claude AI with custom skills for:
+
+- **Code Generation**: Auto-generate boilerplate (UseCases, Repositories, Screens)
+- **Feature Planning**: Structured proposals with OpenSpec
+- **Code Review**: Automated checks for architecture compliance
+- **Testing**: Generate widget and unit tests
+- **Documentation**: Auto-generate feature docs with diagrams
+- **Debugging**: Trace issues through Clean Architecture layers
+
+**Example workflows:**
+```
+# Generate a new use case across all layers
+/pa-generate-usecase [UseCase Name]
+
+# Plan and build a complete screen
+/new-screen-plan [ScreenName] [description]
+/new-screen-build [ScreenName]
+
+# Review code for architecture compliance
+/pa-review-code [file-path]
+
+# Generate test coverage
+/pa-unittest [file-path]
+```
+
+All skills follow Clean Architecture patterns and Riverpod best practices.
+
+---
+
+## Quick Links
+
+| Resource | Purpose |
+|---|---|
+| [.claude/CLAUDE.md](.claude/CLAUDE.md) | Claude context, skills, and agents reference |
+| [.github/skills/](.github/skills/) | OpenSpec workflow skills (propose, apply, explore, archive) |
+| [lib/features/transformer/FEATURE.md](lib/features/transformer/presentation/screens/FEATURE.md) | Transformer screen architecture and flow diagrams |
+| [SETUP.md](SETUP.md) | Detailed setup instructions |
 
 ---
 
@@ -269,10 +367,18 @@ Length: [word count or "short / medium / long"]
 
 ```
 prompt-app/
+├── .github/
+│   ├── skills/               ← OpenSpec skills (propose, apply, explore, archive)
+│   ├── prompts/              ← Reusable prompt templates
+│   └── workflows/            ← CI/CD pipelines
+├── .claude/
+│   ├── CLAUDE.md             ← Claude context and skill reference
+│   ├── skills/               ← Flutter-specific AI skills
+│   └── agents/               ← Specialized agents (flutter-expert, prompt-engineer)
 ├── lib/
 │   ├── main.dart
 │   ├── core/
-│   │   ├── network/          ← OpenAI HTTP client
+│   │   ├── network/          ← Gemini/OpenAI HTTP client
 │   │   └── theme/            ← AppTheme, AppColors, AppSpacing
 │   ├── features/
 │   │   └── transformer/
@@ -280,19 +386,67 @@ prompt-app/
 │   │       ├── data/         ← AIRepositoryImpl, datasource, Riverpod providers
 │   │       └── presentation/ ← TransformerNotifier, TransformerScreen
 │   └── shared/
-│       └── widgets/          ← CopyButton
+│       └── widgets/          ← CopyButton, reusable components
+├── openspec/
+│   └── changes/              ← OpenSpec change artifacts (proposal, design, tasks)
 ├── test/
 └── pubspec.yaml
 ```
+
+**Key Directories:**
+- `.github/` — OpenSpec skills and CI workflows
+- `.claude/` — Claude AI skills and agents for development
+- `lib/features/` — Feature-first Clean Architecture modules
+- `openspec/changes/` — Structured feature proposals and tasks
 
 ---
 
 ## Contributing
 
+### Development Process
+
+This project follows a structured development workflow:
+
+1. **Start with OpenSpec Propose**
+   ```
+   /openspec-propose [feature-name]
+   ```
+   Creates a complete proposal with design and tasks.
+
+2. **Implement with OpenSpec Apply**
+   ```
+   /openspec-apply-change [feature-name]
+   ```
+   Works through the task list systematically.
+
+3. **Use AI Skills for Implementation**
+   - Generate scaffolding: `/pa-scaffold`
+   - Create screens: `/new-screen-plan` then `/new-screen-build`
+   - Review code: `/pa-review-code`
+   - Add tests: `/pa-unittest`
+
+4. **Archive when complete**
+   ```
+   /openspec-archive-change [feature-name]
+   ```
+
+### Git Workflow
+
 1. Fork the repo
 2. Create a feature branch: `git checkout -b feat/your-feature`
-3. Commit your changes: `git commit -m "feat: add your feature"`
-4. Push and open a PR against `main`
+3. Follow the OpenSpec workflow for implementation
+4. Commit your changes: `git commit -m "feat: add your feature"`
+5. Push and open a PR against `main`
+
+### Code Standards
+
+- **Architecture**: Clean Architecture with feature-first structure
+- **State Management**: Riverpod 2 AsyncNotifiers
+- **UI**: Material 3 design system with theme tokens
+- **Testing**: Widget tests for screens, unit tests for use cases
+- **Documentation**: Update FEATURE.md for significant features
+
+See [.claude/skills/pa-review-code/](.claude/skills/pa-review-code/) for the complete checklist.
 
 ---
 

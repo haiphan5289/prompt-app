@@ -86,7 +86,11 @@
       "Bash(/Users/hai.phan/Desktop/haiphan/flutter/flutter/bin/flutter --version)",
       "Bash(/Users/hai.phan/Desktop/haiphan/flutter_chotot/project/flutter/bin/flutter --version)",
       "Bash(/Users/hai.phan/Desktop/haiphan/learn_flutter_2/Flutter/flutter/bin/flutter --version)",
-      "Bash(python3 -c \"import json,sys; devices=json.load\\(sys.stdin\\)['devices']; [print\\(k, '→', [d['name'] for d in v if d['isAvailable']]\\) for k,v in devices.items\\(\\) if any\\(d['isAvailable'] for d in v\\)]\")"
+      "Bash(python3 -c \"import json,sys; devices=json.load\\(sys.stdin\\)['devices']; [print\\(k, '→', [d['name'] for d in v if d['isAvailable']]\\) for k,v in devices.items\\(\\) if any\\(d['isAvailable'] for d in v\\)]\")",
+      "Bash(curl -s \"https://generativelanguage.googleapis.com/v1beta/models?key=AIzaSyDyyChI2M0sFQQdg8PczD6elESMi0Ki48I\")",
+      "Bash(python3 -c \"import json,sys; models=json.load\\(sys.stdin\\).get\\('models',[]\\); [print\\(m['name'], '-', m.get\\('supportedGenerationMethods',[]\\)\\) for m in models]\")",
+      "Bash(curl -s 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDyyChI2M0sFQQdg8PczD6elESMi0Ki48I' -H 'Content-Type: application/json' -d '{\"contents\":[{\"parts\":[{\"text\":\"hi\"}]}]}')",
+      "Bash(python3 -c \"import json,sys; r=json.load\\(sys.stdin\\); print\\(json.dumps\\(r, indent=2\\)\\)\")"
     ]
   },
   "hooks": {
