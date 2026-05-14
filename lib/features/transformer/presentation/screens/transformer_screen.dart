@@ -16,15 +16,42 @@ class TransformerScreen extends ConsumerStatefulWidget {
 
 class _TransformerScreenState extends ConsumerState<TransformerScreen> {
   final _controller = TextEditingController();
+  final _titleController = TextEditingController();
+  PromptPattern _selectedPattern = PromptPattern.autoSelect('');
 
   @override
   void dispose() {
     _controller.dispose();
+    _titleController.dispose();
     super.dispose();
   }
 
-  void _submit() =>
-      ref.read(transformerProvider.notifier).transform(_controller.text);
+  void _submit() {
+    ref.read(transformerProvider.notifier).transform(
+      _controller.text,
+      title: _titleController.text.trim().isNotEmpty
+          ? _titleController.text.trim()
+          : null,
+    );
+  }
+
+  void _onPromptChanged(String text) {
+    setState(() {
+      _selectedPattern = PromptPattern.autoSelect(
+        text,
+        title: _titleController.text.trim().isNotEmpty ? _titleController.text.trim() : null,
+      );
+    });
+  }
+
+  void _onTitleChanged(String text) {
+    setState(() {
+      _selectedPattern = PromptPattern.autoSelect(
+        _controller.text,
+        title: text.trim().isNotEmpty ? text.trim() : null,
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +60,7 @@ class _TransformerScreenState extends ConsumerState<TransformerScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Prompt Transformer'),
+        title: const Text('Biến Đổi Câu Hỏi'),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -46,15 +73,47 @@ class _TransformerScreenState extends ConsumerState<TransformerScreen> {
                 minLines: 4,
                 maxLines: 8,
                 textInputAction: TextInputAction.newline,
+                keyboardType: TextInputType.multiline,
+                textCapitalization: TextCapitalization.sentences,
+                enableInteractiveSelection: true,
+                enableSuggestions: true,
+                autocorrect: true,
+                onChanged: _onPromptChanged,
                 decoration: InputDecoration(
                   fillColor: cs.surfaceContainerLow,
-                  hintText: 'Type your prompt here…',
+                  hintText: 'Nhập câu hỏi của bạn ở đây… (hỗ trợ tiếng Việt)',
+                  helperText: 'Long press để paste',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              TextField(
+                controller: _titleController,
+                keyboardType: TextInputType.text,
+                textCapitalization: TextCapitalization.words,
+                enableInteractiveSelection: true,
+                enableSuggestions: true,
+                autocorrect: true,
+                onChanged: _onTitleChanged,
+                decoration: InputDecoration(
+                  fillColor: cs.surfaceContainerLow,
+                  labelText: 'Vai trò/Chức danh (tùy chọn)',
+                  hintText: 'VD: Chuyên gia giặt sấy, Nhà phát triển Flutter, Quản lý bán hàng',
+                  helperText: _selectedPattern.requiresTitle 
+                    ? 'Bắt buộc cho pattern "${_selectedPattern.name}" • Long press để paste'
+                    : 'Tùy chọn - sẽ được dùng nếu pattern yêu cầu • Long press để paste',
+                  prefixIcon: const Icon(Icons.person_outline),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
               ),
               const SizedBox(height: AppSpacing.md),
               FilledButton(
                 onPressed: state.isLoading ? null : _submit,
-                child: const Text('Transform & Ask AI'),
+                child: const Text('Biến Đổi & Hỏi AI'),
               ),
               const SizedBox(height: AppSpacing.lg),
               state.when(
@@ -125,11 +184,8 @@ class _ResultCard extends StatelessWidget {
   }
 
   Color _categoryColor(PatternCategory category) => switch (category) {
-        PatternCategory.roleBased => AppColors.roleBased,
-        PatternCategory.chainOfThought => AppColors.chainOfThought,
-        PatternCategory.fewShot => AppColors.fewShot,
-        PatternCategory.risen => AppColors.risen,
-        PatternCategory.cato => AppColors.cato,
+        PatternCategory.persona => AppColors.persona,
+        PatternCategory.professionalRole => AppColors.professionalRole,
       };
 }
 
@@ -161,7 +217,7 @@ class _ErrorView extends StatelessWidget {
         OutlinedButton.icon(
           onPressed: onRetry,
           icon: const Icon(Icons.refresh),
-          label: const Text('Retry'),
+          label: const Text('Thử Lại'),
         ),
       ],
     );

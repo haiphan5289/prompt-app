@@ -5,8 +5,11 @@ The Transformer Screen is the core UI of Prompt App where users input simple, na
 
 ## Business Rules
 - Empty or whitespace-only input must be ignored (no API call made)
-- Pattern is auto-selected based on keyword analysis of user input (fallback: CATO pattern)
-- Enhanced prompt is constructed by template replacement (`{{rawPrompt}}` → user input)
+- Pattern is auto-selected based on keyword analysis of user input (fallback: Custom pattern)
+- **Title field** appears dynamically when selected pattern has `requiresTitle = true` (e.g., Expert Persona, Professional Role, Technical Expert)
+- Enhanced prompt is constructed by template replacement:
+  - `{{rawPrompt}}` → user input
+  - `{{title}}` → title field value (when pattern requires title)
 - AI response is retrieved via OpenAI chat endpoint and displayed with pattern metadata
 - Copy button provides visual feedback (check icon for 2 seconds) after copying to clipboard
 - Loading state prevents multiple concurrent submissions
@@ -29,8 +32,8 @@ sequenceDiagram
     participant Pattern as PromptPattern
     participant Run as RunPromptUseCase
     participant Repo as AIRepository
-    participant DS as AIRemoteDatasource
-    participant API as OpenAIClient
+    participant DS as AIRemo(& title if required) & clicks "Transform & Ask AI"
+    UI->>Notifier: transform(rawPrompt, title: title
     
     User->>UI: Types prompt & clicks "Transform & Ask AI"
     UI->>Notifier: transform(rawPrompt)
@@ -41,9 +44,9 @@ sequenceDiagram
     Notifier->>Pattern: autoSelect(rawPrompt)
     Pattern-->>Notifier: Selected pattern (e.g., CATO)
     
-    Notifier->>Transform: execute(rawPrompt, pattern)
-    Transform->>Pattern: pattern.transform(rawPrompt)
-    Pattern-->>Transform: Enhanced prompt with template
+    Notifier->>Transform: execute(rawPrompt, pattern, title: title)
+    Transform->>Pattern: pattern.transform(rawPrompt, title: title)
+    Pattern-->>Transform: Enhanced prompt with template ({{rawPrompt}} & {{title}} replaced)
     Transform-->>Notifier: Enhanced prompt
     
     Notifier->>Run: execute(enhancedPrompt)
@@ -78,7 +81,8 @@ flowchart TD
     Scroll["SingleChildScrollView<br/>padding: AppSpacing.md"]
     Column["Column<br/>crossAxisAlignment: stretch"]
     
-    TextField["TextField<br/>minLines: 4, maxLines: 8<br/>hint: 'Type your prompt here…'"]
+    TextField["TextField<br/>minLines: 4, maxLines: 8<br/>hint: 'Type your prompt here…'<br/>onChanged: auto-detect pattern"]
+    TitleField["TextField (conditional)<br/>shown if pattern.requiresTitle<br/>hint: 'Enter professional role or title…'"]
     Spacing1["SizedBox<br/>height: AppSpacing.md"]
     Button["FilledButton<br/>'Transform & Ask AI'<br/>disabled when loading"]
     Spacing2["SizedBox<br/>height: AppSpacing.lg"]
@@ -105,6 +109,7 @@ flowchart TD
     SafeArea --> Scroll
     Scroll --> Column
     
+    Column -.->|if requiresTitle| TitleField
     Column --> TextField
     Column --> Spacing1
     Column --> Button
@@ -135,45 +140,105 @@ flowchart TD
 ```
 
 ## Prompt Pattern Involvement
-The feature uses 5 built-in patterns with auto-selection logic:
+The feature uses 5 built-in persona-based patterns with auto-selection logic:
 
-| Pattern ID | Name | Category | Selection Trigger |
-|---|---|---|---|
-| `role-based` | Role-based | roleBased | Keywords: expert, as a, act as, you are, role, specialist |
-| `chain-of-thought` | Chain of Thought | chainOfThought | Keywords: step, how, explain, why, process, guide, work |
-| `few-shot` | Few-Shot | fewShot | Keywords: example, like, similar, compare, instance |
-| `risen` | RISEN | risen | Keywords: goal, achieve, improve, plan, result, strategy |
-| `cato` | CATO | cato | Default fallback |
+| Pattern ID | Name | Category | Requires Title | Selection Trigger |
+|---|---|---|---|---|
+| `expert-persona` | Expert Persona | persona | ✅ Yes | Keywords: expert, specialist, professional, master, authority |
+| `professional-role` | Professional Role | professionalRole | ✅ Yes | Keywords: as a, act as, you are, i am a, role of, perspective of |
+| `chain-of-thought` | Chain of Thought | systematicThinking | ❌ No | Keywords: step, how, explain, why, process, analyze, break down |
+| `technical-expert` | Technical Expert | technicalExpert | ✅ Yes | Keywords: technical, architecture, implement, code, design, system |
+| `custom` | Custom | custom | ❌ No | Default fallback (no transformation) |
 
 **Transformation:**
 ```dart
-template.replaceAll('{{rawPrompt}}', rawPrompt.trim())
+// Replace both placeholders
+template
+  .replaceAll('{{rawPrompt}}', rawPrompt.trim())
+  .replaceAll('{{title}}', title?.trim() ?? '')
 ```
 
-**Example (CATO):**
+**Example (Expert Persona with title):**
 ```
-Input: "summarize this article"
-Output: "Context: You are helping with the following: summarize this article
-         Action: Provide a clear, structured response.
-         Target: Address all aspects of the request.
-         Output: Format your response for maximum clarity and usefulness."
+Input: 
+  - Raw Prompt: "How do I improve my sales conversion rate?"
+  - Title: "Sales Manager"
+
+Output: "You are an expert Sales Manager with deep expertise and mastery in your field.
+
+## Core Identity
+**Role:** Senior Sales Manager & Domain Expert
+**Specialization:** Industry best practices, proven patterns, and real-world solutions
+
+## Your Task
+How do I improve my sales conversion rate?
+
+## Your Approach
+As a world-class Sales Manager, you will:
+1. **Analyze** — Break down the problem with expert insight...
+2. **Apply Expertise** — Use industry best practices...
+... (full template with 5 sections)"
+```
+
+**Example (Chain of Thought - no title required):**
+```
+Input: "How does quantum computing work?"
+
+Output: "Let's approach this systematically, breaking down the problem step-by-step.
+
+Problem: How does quantum computing work?
+
+I will:
+1. Analyze the core requirements
+2. Consider different approaches
+3. Evaluate trade-offs
+4. Provide a reasoned recommendation
+
+Let me work through this carefully:"
 ```
 
 ## Key Files & Symbols
 
-| File | Symbol | Purpose |
-|---|---|---|
-| `lib/features/transformer/presentation/screens/transformer_screen.dart` | `TransformerScreen` | Main UI: input field, submit button, result display, error handling |
-| `lib/features/transformer/presentation/notifiers/transformer_notifier.dart` | `TransformerNotifier` | Orchestrates transform workflow: auto-select pattern → transform → run AI → emit result |
-| `lib/features/transformer/presentation/notifiers/transformer_notifier.dart` | `TransformerResult` | Data class holding raw prompt, pattern, enhanced prompt, AI response |
-| `lib/features/transformer/domain/entities/prompt_pattern.dart` | `PromptPattern` | Entity defining pattern structure, template transformation, and auto-selection logic |
-| `lib/features/transformer/domain/usecases/transform_prompt_use_case.dart` | `TransformPromptUseCase` | Pure function: applies pattern template to raw prompt |
-| `lib/features/transformer/domain/usecases/run_prompt_use_case.dart` | `RunPromptUseCase` | Calls repository to execute enhanced prompt via AI API |
-| `lib/features/transformer/domain/repositories/ai_repository.dart` | `AIRepository` | Abstract interface for AI prompt execution |
-| `lib/features/transformer/data/repositories/ai_repository_impl.dart` | `AIRepositoryImpl` | Concrete repository delegating to datasource |
-| `lib/features/transformer/data/datasources/ai_remote_datasource.dart` | `AIRemoteDatasource` | Remote data source wrapping OpenAI client |
-| `lib/core/network/openai_client.dart` | `OpenAIClient` | HTTP client for OpenAI chat completions API |
-| `lib/shared/widgets/copy_button.dart` | `CopyButton` | Reusable widget for copying text to clipboard with feedback |
+| FFuture Enhancements (Next Phase)
+- **Ask-Before-Implement Pattern** — Add prompt structure that instructs AI to ask clarifying questions before providing solutions (inspired by flutter-persona-pattern.prompt). This would make Expert Persona pattern more interactive and thorough.
+- **Manual pattern selection** — Add dropdown to let users override auto-selection
+- **History persistence** — Store transform results locally for "History" feature
+- **Enhanced prompt preview** — Show user the transformed prompt before AI execution
+Recent Changes (May 13, 2026)
+✅ **Replaced 5 static patterns with persona-based patterns:**
+- Old: `roleBased`, `chainOfThought`, `fewShot`, `risen`, `cato`
+- New: `expertPersona`, `professionalRole`, `chainOfThought`, `technicalExpert`, `custom`
+
+✅ **Added dynamic title field support:**
+- `PromptPattern` now has `requiresTitle: bool` field
+- `transform()` method accepts optional `title` parameter
+- UI shows/hides title TextField based on pattern requirements
+- Template supports `{{title}}` placeholder replacement
+
+✅ **Enhanced Expert Persona pattern:**
+- Comprehensive template with 6 sections (Core Identity, Your Task, Your Approach, Expertise Areas, Standards & Quality, Communication Protocol)
+- Inspired by flutter-persona-pattern.prompt structure
+- Generic enough for any professional role (Sales Manager, Flutter Developer, Marketing Expert, etc.)
+
+✅ **Updated color system:**
+- New AppColors: `persona`, `systematicThinking`, `professionalRole`, `technicalExpert`, `custom`
+
+## Sources
+- **Files read:**
+  - `lib/features/transformer/presentation/screens/transformer_screen.dart`
+  - `lib/features/transformer/presentation/notifiers/transformer_notifier.dart`
+  - `lib/features/transformer/domain/entities/prompt_pattern.dart`
+  - `lib/features/transformer/domain/usecases/transform_prompt_use_case.dart`
+  - `lib/features/transformer/domain/usecases/run_prompt_use_case.dart`
+  - `lib/features/transformer/domain/repositories/ai_repository.dart`
+  - `lib/features/transformer/data/repositories/ai_repository_impl.dart`
+  - `lib/features/transformer/data/datasources/ai_remote_datasource.dart`
+  - `lib/shared/widgets/copy_button.dart`
+  - `lib/core/theme/app_colors.dart`
+  - `.github/prompts/flutter-persona-pattern.prompt.md`
+  - `README.md`
+- **Git diff:** Current branch vs main (17+ Dart files modified including all transformer layers + color theme)
+- **Last updared/widgets/copy_button.dart` | `CopyButton` | Reusable widget for copying text to clipboard with feedback |
 
 ## API Contracts
 **Endpoint:** OpenAI Chat Completions API (via `OpenAIClient.chat`)

@@ -5,12 +5,8 @@ import 'package:flutter/material.dart';
 /// for fixed domain colors that don't change with theme (pattern category badges).
 abstract final class AppColors {
   // Pattern category badge colors
-  static const Color roleBased = Color(0xFF6366F1);     // indigo
-  static const Color chainOfThought = Color(0xFF0EA5E9); // sky blue
-  static const Color fewShot = Color(0xFFF59E0B);        // amber
-  static const Color risen = Color(0xFF10B981);           // emerald
-  static const Color cato = Color(0xFFEC4899);            // pink
-  static const Color custom = Color(0xFF64748B);          // slate
+  static const Color persona = Color(0xFF6366F1);              // indigo - Expert Persona
+  static const Color professionalRole = Color(0xFF10B981);     // emerald - Professional Role
 
   // Gradient used for hero/branding surfaces
   static const LinearGradient brandGradient = LinearGradient(
